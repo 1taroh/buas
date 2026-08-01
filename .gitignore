@@ -1,1 +1,7 @@
-AGENTS.md
+# Local agent configuration
+/.agents/
+/.codex/
+
+# Rust build artifacts and backups
+/target/
+**/*.rs.bk
