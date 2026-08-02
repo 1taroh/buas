@@ -2,14 +2,14 @@
 
 ## Phase 1: 最小 Burst MVP
 
-- [x] `buas uv sync` のCLI引数を受け取る
-- [ ] Linux環境、`uv sync`、プロジェクトルートを検証する
+- [x] `buas tests/fixtures/generate_dummy_file.sh` のCLI引数を受け取る
+- [ ] Linux環境、`tests/fixtures/generate_dummy_file.sh`、プロジェクトルートを検証する
 - [x] `/dev/shm/buas/<generation>/` に一意な作業領域を作成する
-- [ ] テスト時に一時ディレクトリへ差し替えられるストレージ設定を用意する
-- [ ] 新規プロジェクトの `.venv` をDRAM側へ作成する
+- [x] テスト時に一時ディレクトリへ差し替えられるストレージ設定を用意する
+- [x] 新規プロジェクトの `.venv` をDRAM側へ作成する
 - [ ] プロジェクトの `.venv` からDRAM側へのsymlinkを作成する
-- [ ] `uv sync` を子プロセスとして実行し、終了コード・シグナルを伝播する
-- [ ] `uv sync` 失敗時に作業領域とsymlinkを安全に後始末する
+- [ ] `tests/fixtures/generate_dummy_file.sh` を子プロセスとして実行し、終了コード・シグナルを伝播する
+- [ ] `tests/fixtures/generate_dummy_file.sh` 失敗時に作業領域とsymlinkを安全に後始末する
 - [ ] 既存の `.venv` がある場合は、壊さずエラーにする
 - [ ] 新規プロジェクトでの成功・失敗・後始末を自動テストする
 - [ ] READMEにPhase 1の使い方と制約を追記する
