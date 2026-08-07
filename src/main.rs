@@ -38,6 +38,10 @@ fn main() -> std::io::Result<()> {
         .status()?;
 
     println!("{status}");
+    if !status.success() {
+        // 子プロセスの終了コード・シグナルを伝播する
+        std::process::exit(status.code().unwrap_or(1));
+    }
 
     // 作業領域 (dram) 直下の成果物を、元のカレントディレクトリから参照できるようにする。
     expose_dram_workspace_entries(&dir, &current_dir)?;
