@@ -1,6 +1,9 @@
 # buas
 burst, use, auto sync
 
+Phase 1 の実行手順、終了状態、後始末、対象外の挙動は
+[Phase 1 CLI contract](docs/phase-1-contract.md) を参照してください。
+
 ## Large-file comparison test
 
 An ignored integration test writes the same zero-filled file to the project

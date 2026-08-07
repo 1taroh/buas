@@ -2,22 +2,27 @@
 
 ## Phase 1: 最小 Burst MVP
 
-- [x] `buas tests/fixtures/generate_dummy_file.sh` のCLI引数を受け取る
-- [ ] Linux環境、`tests/fixtures/generate_dummy_file.sh`、プロジェクトルートを検証する
+- [x] `buas tests/fixtures/generate_dummy_files.sh` のCLI引数を受け取る
+- [ ] 子プロセスを起動できない場合、OSエラーを利用者に分かる形で返す
+- [ ] 作業領域を作成できない場合、OSエラーを利用者に分かる形で返す
 - [x] `/dev/shm/buas/<generation>/` に一意な作業領域を作成する
 - [x] テスト時に一時ディレクトリへ差し替えられるストレージ設定を用意する
 - [x] 新規プロジェクトの `.venv` をDRAM側へ作成する
-- [ ] プロジェクトの `.venv` からDRAM側へのsymlinkを作成する
-- [ ] `tests/fixtures/generate_dummy_file.sh` を子プロセスとして実行し、終了コード・シグナルを伝播する
-- [ ] `tests/fixtures/generate_dummy_file.sh` 失敗時に作業領域とsymlinkを安全に後始末する
-- [ ] 既存の `.venv` がある場合は、壊さずエラーにする
-- [ ] 新規プロジェクトでの成功・失敗・後始末を自動テストする
-- [ ] READMEにPhase 1の使い方と制約を追記する
+- [x] プロジェクトの `.venv` からDRAM側へのsymlinkを作成する
+- [x] `tests/fixtures/generate_dummy_files.sh` を子プロセスとして実行し、終了コード・シグナルを伝播する
+- [ ] 子プロセスの失敗時に、今回作成したDRAM workspaceを削除する
+- [ ] 成果物公開の途中で失敗した場合、今回作成したsymlinkをrollbackする
+- [ ] rollback後に今回作成したDRAM workspaceを削除する
+- [ ] 上記の失敗経路を自動テストする
+- [x] 公開先との衝突時に既存ファイルを変更しない
+- [x] 既存の `.venv` がある場合は、壊さずエラーにする
+- [x] 新規プロジェクトの成功経路を自動テストする
+- [x] READMEにPhase 1の使い方と制約を追記する
 
 ## Phase 2: 安全性の基礎
 
 - [ ] 同一プロジェクトを同時実行できないようロックを実装する
-- [ ] 既存 `.venv` をDRAMへ取り込む方式と安全条件を決める
+- [ ] 既存 `.venv` や `node_modules` を通常実行と同等に更新する方式と安全条件を決める
 - [ ] generationのメタデータと状態（BURST / READY等）を管理する
 - [ ] 異常終了時に現在の永続環境を破壊しない復旧処理を実装する
 - [ ] ロック・状態管理・異常終了のテストを追加する

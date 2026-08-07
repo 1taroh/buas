@@ -181,6 +181,26 @@ command completion ≠ durable sync completion
 環境構築が完了した時点で開発者は利用を開始でき、durable sync
 はその後に進行する。
 
+### 5.1 前景処理と非同期処理の結果
+
+buas が呼び出し元へ返す終了状態は、制御を返すまでに行う前景処理の結果を
+表す。ラップした子プロセスが終了した場合は、その終了状態を伝播する。
+DRAM workspace の作成、子プロセスの起動、成果物の公開など、buas 自身の
+前景処理が失敗した場合は buas のエラーとして報告する。
+
+制御を返した後の background sync は、すでに返した終了状態へ結果を反映できない。
+そのため durable sync の成功・失敗は、generation の状態とエラー情報として
+別に記録する。
+
+``` text
+foreground command result
+    ≠ environment availability
+    ≠ durable sync result
+```
+
+Phase 1 における具体的な境界とエラー処理は
+[`docs/phase-1-contract.md`](./docs/phase-1-contract.md) に定める。
+
 ------------------------------------------------------------------------
 
 ## 6. DRAM → SSD 移行時の安全性
