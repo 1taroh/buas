@@ -4,6 +4,11 @@ burst, use, auto sync
 Phase 1 の実行手順、終了状態、後始末、対象外の挙動は
 [Phase 1 CLI contract](docs/phase-1-contract.md) を参照してください。
 
+> [!NOTE]
+> 初期プロトタイプを退避し、Phase 1 を簡潔な構成で再実装しています。
+> 現在の実装状況と順序は [TODO](TODO.md)、採用した内部設計は
+> [Phase 1 再実装方針](docs/reimplementation-plan.md) を参照してください。
+
 ## Large-file comparison test
 
 An ignored integration test writes the same zero-filled file to the project
